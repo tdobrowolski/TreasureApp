@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tobiaszdobrowo.codenametreasure.NewEntryActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/new_name"
+            android:hint="Imię Nazwisko"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+
+        <EditText
+            android:id="@+id/new_object"
+            android:hint="Nazwa przedmiotu"
+            android:layout_above="@+id/new_name"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

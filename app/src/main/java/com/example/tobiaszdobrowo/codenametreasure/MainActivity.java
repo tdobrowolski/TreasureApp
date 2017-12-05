@@ -40,12 +40,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // dodaj / usuń element
 
         // tworzymy źródło danych
-        ArrayList<Object> articles = new ArrayList<>();
+        ArrayList<Object> names = new ArrayList<>();
         for (int i = 0; i < 5; ++i)
-            articles.add(new Object());
+            names.add(new Object());
+
+        ArrayList<Object> dates = new ArrayList<>();
+        for (int i = 0; i < 5; ++i)
+            dates.add(new Object());
+
+        ArrayList<Object> objects = new ArrayList<>();
+        for (int i = 0; i < 5; ++i)
+            objects.add(new Object());
 
         // tworzymy adapter oraz łączymy go z RecyclerView
-        recyclerView.setAdapter(new MyAdapter(articles, recyclerView));
+        recyclerView.setAdapter(new MyAdapter(names, dates, objects, recyclerView));
 
     }
 

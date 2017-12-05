@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 
 /**
@@ -17,23 +16,31 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     private ArrayList<Object> mNames = new ArrayList<>();
 
+    private ArrayList<Object> mDates = new ArrayList<>();
+
+    private ArrayList<Object> mObjects = new ArrayList<>();
+
     private RecyclerView mRecyclerView;
 
     private class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mName;
+        public TextView mName, mDate, mObject;
 
         public MyViewHolder(View pItem) {
 
             super(pItem);
             mName = (TextView) pItem.findViewById(R.id.text_name);
+            mDate = (TextView) pItem.findViewById(R.id.text_date);
+            mObject = (TextView) pItem.findViewById(R.id.text_object);
 
         }
 
     }
 
-    public MyAdapter(ArrayList<Object> pNames, RecyclerView pRecyclerView){
+    public MyAdapter(ArrayList<Object> pNames, ArrayList<Object> pDates, ArrayList<Object> pObjects, RecyclerView pRecyclerView){
         mNames = pNames;
+        mDates = pDates;
+        mObjects = pObjects;
         mRecyclerView = pRecyclerView;
     }
 
@@ -51,6 +58,8 @@ public class MyAdapter extends RecyclerView.Adapter {
 
                     int positionToDelete = mRecyclerView.getChildAdapterPosition(v);
                     mNames.remove(positionToDelete);
+                    mDates.remove(positionToDelete);
+                    mObjects.remove(positionToDelete);
                     notifyItemRemoved(positionToDelete);
                 }
 
@@ -65,6 +74,12 @@ public class MyAdapter extends RecyclerView.Adapter {
 
         Object object = mNames.get(position);
         ((MyViewHolder) holder).mName.setText(object.getName());
+
+        Object object1 = mDates.get(position);
+        ((MyViewHolder) holder).mDate.setText(object1.getDate());
+
+        Object object2 = mObjects.get(position);
+        ((MyViewHolder) holder).mObject.setText(object2.getObject());
 
     }
 
