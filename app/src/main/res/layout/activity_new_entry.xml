@@ -26,12 +26,13 @@
             android:layout_marginBottom="10dp"
             android:hint="Nazwa przedmiotu" />
 
-        <Button
+        <TextView
             android:id="@+id/date_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Ustaw deadline oddania" />
+            android:text="Ustaw deadline oddania"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
