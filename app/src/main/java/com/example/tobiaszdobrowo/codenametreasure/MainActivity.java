@@ -1,5 +1,6 @@
 package com.example.tobiaszdobrowo.codenametreasure;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,11 +18,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MainActivity.context = getApplicationContext();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,22 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // dodaj / usuń element
 
-        // tworzymy źródło danych
-        /*ArrayList<Object> names = new ArrayList<>();
-        for (int i = 0; i < 5; ++i)
-            names.add(new Object());
-
-        ArrayList<Object> dates = new ArrayList<>();
-        for (int i = 0; i < 5; ++i)
-            dates.add(new Object());
-
-        ArrayList<Object> objects = new ArrayList<>();
-        for (int i = 0; i < 5; ++i)
-            objects.add(new Object());*/
-
         // tworzymy adapter oraz łączymy go z RecyclerView
-        recyclerView.setAdapter(new MyAdapter(names, dates, objects, recyclerView));
-
+        recyclerView.setAdapter(new MyAdapter(recyclerView));
     }
 
     @Override
@@ -80,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static Context getAppContext() {
+        return MainActivity.context;
     }
 
 }

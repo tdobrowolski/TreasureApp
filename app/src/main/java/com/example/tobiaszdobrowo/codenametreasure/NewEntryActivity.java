@@ -27,12 +27,10 @@ public class NewEntryActivity extends AppCompatActivity {
                 Intent datePickIntent = new Intent(NewEntryActivity.this, NewEntryDatePickActivity.class);
 
                 NewEntryActivity.this.startActivity(datePickIntent);
-
             }
 
 
         });
-
     }
 
     @Override
@@ -40,7 +38,6 @@ public class NewEntryActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.menu_new_entry, menu);
         return true;
-
     }
 
     @Override
@@ -57,7 +54,6 @@ public class NewEntryActivity extends AppCompatActivity {
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
-
         }
     }
 

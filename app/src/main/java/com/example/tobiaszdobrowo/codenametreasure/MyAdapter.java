@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tobiaszdobrowo on 03.12.2017.
@@ -15,8 +16,9 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter {
 
-    Context mContext;
+    Context mContext = MainActivity.getAppContext();
     Cursor mCursor;
+    database db = new database(mContext);
 
     private RecyclerView mRecyclerView;
 
@@ -34,16 +36,17 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     }
 
-    public MyAdapter(Context context, Cursor cursor) {
+    public MyAdapter(RecyclerView pRecyclerView) {
 
-        mContext = context;
-        mCursor = cursor;
+        //mContext = context;
+        //mCursor = cursor;
+        mRecyclerView = pRecyclerView;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
 
-        database db = new database(mContext);
+        db.addObject(new Object("John Paul", "22.10.12", "Parasol"));
 
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.recycle_object_layout, parent, false);
@@ -65,12 +68,19 @@ public class MyAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        mCursor.moveToPosition(position);
+        //mCursor.moveToPosition(position);
+
+        Object sObj = db.getObject(position);
+        ((MyViewHolder) holder).mName.setText(sObj.getName());
+        ((MyViewHolder) holder).mDate.setText(sObj.getDate());
+        ((MyViewHolder) holder).mObject.setText(sObj.getObject());
     }
 
     @Override
     public int getItemCount() {
-        return mCursor.getCount();
+        List<Object> objects = db.getAllObjects();
+        return objects.size();
+        //return 0;
     }
 
 }

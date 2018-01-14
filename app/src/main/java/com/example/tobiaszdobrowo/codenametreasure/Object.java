@@ -25,6 +25,11 @@ public class Object {
         this._object = object;
     }
 
+    public Object(String name, String date, String object) {
+        this._name = name;
+        this._date = date;
+        this._object = object;
+    }
 
     // ID
     public int getID() {

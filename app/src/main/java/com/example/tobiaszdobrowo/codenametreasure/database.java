@@ -35,7 +35,6 @@ public class database extends SQLiteOpenHelper {
 
         String CREATE_OBJECTS_TABLE = "CREATE TABLE " + TABLE_OBJECTS + "("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_NAME + " TEXT,"
                 + KEY_DATE + " TEXT,"
                 + KEY_OBJECT + " TEXT" + ")";
         db.execSQL(CREATE_OBJECTS_TABLE);
