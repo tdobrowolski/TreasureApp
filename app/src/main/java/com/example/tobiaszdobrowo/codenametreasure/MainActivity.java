@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,10 +30,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(MainActivity.this, NewEntryActivity.class);
                 MainActivity.this.startActivity(intent);
-
             }
         });
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // dodaj / usuń element
 
         // tworzymy źródło danych
-        ArrayList<Object> names = new ArrayList<>();
+        /*ArrayList<Object> names = new ArrayList<>();
         for (int i = 0; i < 5; ++i)
             names.add(new Object());
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Object> objects = new ArrayList<>();
         for (int i = 0; i < 5; ++i)
-            objects.add(new Object());
+            objects.add(new Object());*/
 
         // tworzymy adapter oraz łączymy go z RecyclerView
         recyclerView.setAdapter(new MyAdapter(names, dates, objects, recyclerView));
