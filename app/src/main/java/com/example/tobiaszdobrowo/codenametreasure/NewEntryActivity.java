@@ -4,20 +4,25 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class NewEntryActivity extends AppCompatActivity {
 
     TextView dateTextView;
     TextView datePicker;
+    EditText namePicker, objectPicker;
     int year, month, day;
     Calendar mDate;
+    String dPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +30,16 @@ public class NewEntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_entry);
         setTitle("Dodaj wpis");
 
+        /*List<Object> contacts = db.getAllObjects();
+
+        for (Object cn : contacts) {
+            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Object: " + cn.getObject();
+            // Writing Contacts to log
+            Log.d("Name: ", log);}*/
+
         datePicker = findViewById(R.id.text_pick_date);
+        namePicker = findViewById(R.id.new_name);
+        objectPicker = findViewById(R.id.new_object);
 
         mDate = Calendar.getInstance();
 
@@ -43,11 +57,12 @@ public class NewEntryActivity extends AppCompatActivity {
 
                         //akcja po zatwierdzeniu wyboru daty
 
+                        dPicker = dayOfMonth + "." + month+1 + "." + year;
+                        Log.d("string", dPicker);
                     }
                 }, year, month, day);
 
                 datePickerDialog.show();
-
             }
         });
     }
@@ -64,8 +79,22 @@ public class NewEntryActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.action_check:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
+
+                String nPicker = namePicker.getText().toString();
+                String oPicker = objectPicker.getText().toString();
+
+                database db = new database(this);
+
+                db.addObject(new Object(nPicker, oPicker, dPicker));
+
+
+                List<Object> contacts = db.getAllObjects();
+
+                for (Object cn : contacts) {
+                    String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Object: " + cn.getObject();
+                    // Writing Contacts to log
+                    Log.d("Name: ", log);}
+
                 finish();
                 return true;
 

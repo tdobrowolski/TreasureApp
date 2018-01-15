@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,8 +45,6 @@ public class MyAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
 
-        db.addObject(new Object("John Paul", "22.10.12", "Parasol"));
-
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.recycle_object_layout, parent, false);
 
@@ -70,10 +67,10 @@ public class MyAdapter extends RecyclerView.Adapter {
 
         //mCursor.moveToPosition(position);
 
-        Object sObj = db.getObject(position);
+        /*Object sObj = db.getObject(position);
         ((MyViewHolder) holder).mName.setText(sObj.getName());
         ((MyViewHolder) holder).mDate.setText(sObj.getDate());
-        ((MyViewHolder) holder).mObject.setText(sObj.getObject());
+        ((MyViewHolder) holder).mObject.setText(sObj.getObject());*/
     }
 
     @Override
