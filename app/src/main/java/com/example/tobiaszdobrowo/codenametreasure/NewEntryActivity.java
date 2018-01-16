@@ -87,7 +87,6 @@ public class NewEntryActivity extends AppCompatActivity {
 
                 db.addObject(new Object(nPicker, oPicker, dPicker));
 
-
                 List<Object> contacts = db.getAllObjects();
 
                 for (Object cn : contacts) {
