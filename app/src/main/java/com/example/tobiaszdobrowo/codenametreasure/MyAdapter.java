@@ -3,7 +3,6 @@ package com.example.tobiaszdobrowo.codenametreasure;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     Context mContext = MainActivity.getAppContext();
     database db = new database(mContext);
-    private List<Object> items;
 
     private RecyclerView mRecyclerView;
 
@@ -41,14 +39,6 @@ public class MyAdapter extends RecyclerView.Adapter {
         //mContext = context;
         //mCursor = cursor;
         mRecyclerView = pRecyclerView;
-        items = db.getAllObjects();
-    }
-
-    public void updateItems() {
-
-        items = db.getAllObjects();
-        notifyDataSetChanged();
-        Log.d("MyAdapter", "updated items");
     }
 
     @Override
@@ -63,8 +53,8 @@ public class MyAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
 
                     int positionToDelete = mRecyclerView.getChildAdapterPosition(v);
+                    // kod usuwania obiektu
                     notifyItemRemoved(positionToDelete);
-                    updateItems();
                 }
             });
 
@@ -74,12 +64,12 @@ public class MyAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        Log.d("position:", "" + position);
+        //mCursor.moveToPosition(position);
 
-        Object sObj = items.get(position);
+        /*Object sObj = db.getObject(position);
         ((MyViewHolder) holder).mName.setText(sObj.getName());
         ((MyViewHolder) holder).mDate.setText(sObj.getDate());
-        ((MyViewHolder) holder).mObject.setText(sObj.getObject());
+        ((MyViewHolder) holder).mObject.setText(sObj.getObject());*/
     }
 
     @Override

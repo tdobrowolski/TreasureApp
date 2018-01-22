@@ -9,7 +9,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,8 +16,6 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     private static Context context;
-    RecyclerView recyclerView;
-    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true); // optymalizacja
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -48,17 +45,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // dodaj / usuń element
 
         // tworzymy adapter oraz łączymy go z RecyclerView
-        adapter = new MyAdapter(recyclerView);
-        recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("MainActivity", "onResume");
-        if(adapter != null) {
-            adapter.updateItems();
-        }
+        recyclerView.setAdapter(new MyAdapter(recyclerView));
     }
 
     @Override
