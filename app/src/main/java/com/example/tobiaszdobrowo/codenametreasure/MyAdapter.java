@@ -17,7 +17,6 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter {
 
     Context mContext = MainActivity.getAppContext();
-    Cursor mCursor;
     database db = new database(mContext);
     private List<Object> items;
 
