@@ -3,6 +3,7 @@ package com.example.tobiaszdobrowo.codenametreasure;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     Context mContext = MainActivity.getAppContext();
     database db = new database(mContext);
+    private List<Object> items;
 
     private RecyclerView mRecyclerView;
 
@@ -36,9 +38,15 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     public MyAdapter(RecyclerView pRecyclerView) {
 
-        //mContext = context;
-        //mCursor = cursor;
         mRecyclerView = pRecyclerView;
+
+        items = db.getAllObjects();
+    }
+
+    public void updateItems() {
+
+        items = db.getAllObjects();
+        notifyDataSetChanged();
     }
 
     @Override
@@ -53,7 +61,10 @@ public class MyAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
 
                     int positionToDelete = mRecyclerView.getChildAdapterPosition(v);
-                    // kod usuwania obiektu
+                    Log.d("1","USUWANIE KLIKA:" + positionToDelete);
+                    db.deleteObject(items.get(positionToDelete));
+                    //items.remove(positionToDelete);
+                    updateItems();
                     notifyItemRemoved(positionToDelete);
                 }
             });
@@ -64,12 +75,10 @@ public class MyAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        //mCursor.moveToPosition(position);
-
-        /*Object sObj = db.getObject(position);
+        Object sObj = items.get(position);
         ((MyViewHolder) holder).mName.setText(sObj.getName());
         ((MyViewHolder) holder).mDate.setText(sObj.getDate());
-        ((MyViewHolder) holder).mObject.setText(sObj.getObject());*/
+        ((MyViewHolder) holder).mObject.setText(sObj.getObject());
     }
 
     @Override

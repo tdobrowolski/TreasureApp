@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     private static Context context;
+    RecyclerView recyclerView;
+    MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true); // optymalizacja
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,7 +48,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // dodaj / usuń element
 
         // tworzymy adapter oraz łączymy go z RecyclerView
-        recyclerView.setAdapter(new MyAdapter(recyclerView));
+        adapter = new MyAdapter(recyclerView);
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        if(adapter != null) {
+            adapter.updateItems();
+        }
     }
 
     @Override
@@ -55,20 +68,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public static Context getAppContext() {
         return MainActivity.context;

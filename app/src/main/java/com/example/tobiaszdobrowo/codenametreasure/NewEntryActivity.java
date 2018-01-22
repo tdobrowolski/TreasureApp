@@ -32,7 +32,6 @@ public class NewEntryActivity extends AppCompatActivity {
     int year, month, day;
     Calendar mDate;
     String dPicker;
-    Switch notificationPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,6 @@ public class NewEntryActivity extends AppCompatActivity {
         datePicker = findViewById(R.id.text_pick_date);
         namePicker = findViewById(R.id.new_name);
         objectPicker = findViewById(R.id.new_object);
-        notificationPicker = findViewById(R.id.notification_switch);
 
         mDate = Calendar.getInstance();
 
@@ -76,24 +74,7 @@ public class NewEntryActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
-        notificationPicker.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-
-                if (isChecked) {
-                    // wlaczony
-                } else {
-                    // wylaczony
-                }
-
-            }
-        });
-
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -116,11 +97,6 @@ public class NewEntryActivity extends AppCompatActivity {
                     // Writing Contacts to log
                     Log.d("Name: ", log);}
 
-                // NOTIFIKACJA TESTOWA
-
-
-                // KONIEC NOTYFIKACJI TESTOWEJ
-
                 finish();
                 return true;
 
@@ -131,6 +107,10 @@ public class NewEntryActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
-
+        getMenuInflater().inflate(R.menu.menu_new_entry, menu);
+        return true;
+    }
 }
