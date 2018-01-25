@@ -53,7 +53,7 @@
             android:id="@+id/text_pick_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="40dp"
             android:text="Wybierz datę"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="0dp"
@@ -62,8 +62,8 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="224dp"
-            app:srcCompat="@drawable/ic_safeillustration" />
+            android:layout_height="201dp"
+            app:srcCompat="@drawable/safeillustration" />
 
     </LinearLayout>
 
