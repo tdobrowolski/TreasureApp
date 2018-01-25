@@ -1,15 +1,8 @@
 package com.example.tobiaszdobrowo.codenametreasure;
 
 import android.app.DatePickerDialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +11,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.List;
@@ -62,7 +54,7 @@ public class NewEntryActivity extends AppCompatActivity {
                         //akcja po zatwierdzeniu wyboru daty
 
                         dPicker = dayOfMonth + "." + month+1 + "." + year;
-                        Log.d("string", dPicker);
+                        datePicker.setText("Wybrana data: " + dPicker);
                     }
                 }, year, month, day);
 
@@ -71,27 +63,51 @@ public class NewEntryActivity extends AppCompatActivity {
         });
     }
 
+    public void saveToDB(String nPicker, String oPicker) {
+
+        database db = new database(this);
+
+        if (dPicker == null) {dPicker = "Brak daty";}
+
+        db.addObject(new Object(nPicker, dPicker, oPicker));
+
+        List<Object> contacts = db.getAllObjects();
+
+        for (Object cn : contacts) {
+            String log = "Id: " + cn.getID()+" ,Name: " + cn.getName() + " ,Object: " + cn.getObject();
+            // Writing Contacts to log
+            Log.d("Name: ", log);}
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 
             case R.id.action_check:
 
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_SHORT;
+
                 String nPicker = namePicker.getText().toString();
                 String oPicker = objectPicker.getText().toString();
 
-                database db = new database(this);
+                if (nPicker.equals("")) {
+                    CharSequence text = "Uzupełnij imię i nazwisko";
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
 
-                db.addObject(new Object(nPicker, dPicker, oPicker));
+                if (oPicker.equals("")) {
+                    CharSequence text = "Uzupełnij obiekt";
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
 
-                List<Object> contacts = db.getAllObjects();
+                if (!nPicker.equals("") && !oPicker.equals("")) {
+                    saveToDB(nPicker, oPicker);
+                    finish();
+                }
 
-                for (Object cn : contacts) {
-                    String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Object: " + cn.getObject();
-                    // Writing Contacts to log
-                    Log.d("Name: ", log);}
-
-                finish();
                 return true;
 
             default:
