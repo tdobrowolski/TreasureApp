@@ -1,7 +1,8 @@
 package com.example.tobiaszdobrowo.codenametreasure;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.database.Cursor;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,7 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
 
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.recycle_object_layout, parent, false);
@@ -58,14 +59,36 @@ public class MyAdapter extends RecyclerView.Adapter {
             // usuniecie obiektu
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(final View v) {
 
-                    int positionToDelete = mRecyclerView.getChildAdapterPosition(v);
-                    Log.d("1","USUWANIE KLIKA:" + positionToDelete);
-                    db.deleteObject(items.get(positionToDelete));
-                    //items.remove(positionToDelete);
-                    updateItems();
-                    notifyItemRemoved(positionToDelete);
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(parent.getContext());
+                    builder1.setMessage("Czy chcesz usunąć ten wpis?");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Tak",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    int positionToDelete = mRecyclerView.getChildAdapterPosition(v);
+                                    db.deleteObject(items.get(positionToDelete));
+                                    updateItems();
+                                    notifyItemRemoved(positionToDelete);
+
+                                    dialog.cancel();
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "Nie",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             });
 

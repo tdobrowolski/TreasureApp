@@ -27,8 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:hint="Imię Nazwisko"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:hint="Imię Nazwisko"/>
 
         <EditText
             android:id="@+id/new_object"
@@ -36,8 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/new_name"
             android:layout_marginBottom="10dp"
-            android:hint="Nazwa przedmiotu"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:hint="Przedmiot"/>
 
         <TextView
             android:id="@+id/date_picker"

@@ -8,7 +8,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +29,6 @@ import java.util.List;
 
 public class NewEntryActivity extends AppCompatActivity {
 
-    TextView dateTextView;
     TextView datePicker;
     EditText namePicker, objectPicker;
     int year, month, day;
@@ -38,13 +40,6 @@ public class NewEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_entry);
         setTitle("Dodaj wpis");
-
-        /*List<Object> contacts = db.getAllObjects();
-
-        for (Object cn : contacts) {
-            String log = "Id: "+cn.getID()+" ,Name: " + cn.getName() + " ,Object: " + cn.getObject();
-            // Writing Contacts to log
-            Log.d("Name: ", log);}*/
 
         datePicker = findViewById(R.id.text_pick_date);
         namePicker = findViewById(R.id.new_name);
@@ -89,7 +84,6 @@ public class NewEntryActivity extends AppCompatActivity {
 
                 db.addObject(new Object(nPicker, dPicker, oPicker));
 
-
                 List<Object> contacts = db.getAllObjects();
 
                 for (Object cn : contacts) {
@@ -111,6 +105,12 @@ public class NewEntryActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_new_entry, menu);
+        Drawable drawable = menu.findItem(R.id.action_check).getIcon();
+
+        drawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(drawable, ContextCompat.getColor(this, R.color.colorPrimaryBlue));
+        menu.findItem(R.id.action_check).setIcon(drawable);
+
         return true;
     }
 }
