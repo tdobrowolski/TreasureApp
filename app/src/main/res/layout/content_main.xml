@@ -14,4 +14,30 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="40dp"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:visibility="gone"
+        android:lines="2"
+        android:lineSpacingExtra="8dp"
+        android:text="Trochę tu pusto. \n Dodaj coś do swojego sejfu." />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="310dp"
+        android:src="@drawable/safeopened" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

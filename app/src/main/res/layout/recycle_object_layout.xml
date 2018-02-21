@@ -24,6 +24,9 @@
                 android:text="Nazwa obiektu"
                 android:textAlignment="textEnd"
                 android:textAllCaps="false"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxEms="6"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
@@ -45,6 +48,9 @@
                 android:fontFamily="sans-serif"
                 android:paddingBottom="2dp"
                 android:text="Imię Nazwisko"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxEms="10"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 android:textStyle="bold" />

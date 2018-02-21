@@ -13,11 +13,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private static Context context;
     RecyclerView recyclerView;
+    private TextView emptyView;
     MyAdapter adapter;
 
     @Override
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        emptyView = (TextView) findViewById(R.id.empty_view);
         recyclerView.setHasFixedSize(true); // optymalizacja
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         // tworzymy adapter oraz łączymy go z RecyclerView
         adapter = new MyAdapter(recyclerView);
         recyclerView.setAdapter(adapter);
+
+        visibilityCheck(adapter.getItemCount());
+
     }
 
     @Override
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if(adapter != null) {
             adapter.updateItems();
+            visibilityCheck(adapter.getItemCount());
         }
     }
 
@@ -68,10 +75,21 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-
     public static Context getAppContext() {
         return MainActivity.context;
+    }
+
+    public void visibilityCheck(int amount) {
+
+        if (amount == 0) {
+            recyclerView.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+        }
+        else {
+            recyclerView.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
+        }
+
     }
 
 }
