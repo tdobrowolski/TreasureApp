@@ -31,7 +31,7 @@ public class NewEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_entry);
-        setTitle("Dodaj wpis");
+        setTitle(R.string.newentry_text);
 
         datePicker = findViewById(R.id.text_pick_date);
         namePicker = findViewById(R.id.new_name);
@@ -54,7 +54,7 @@ public class NewEntryActivity extends AppCompatActivity {
                         //akcja po zatwierdzeniu wyboru daty
 
                         dPicker = dayOfMonth + "." + month+1 + "." + year;
-                        datePicker.setText("Wybrana data: " + dPicker);
+                        datePicker.setText(getResources().getString(R.string.pickeddate_text) + dPicker);
                     }
                 }, year, month, day);
 
@@ -67,16 +67,16 @@ public class NewEntryActivity extends AppCompatActivity {
 
         database db = new database(this);
 
-        if (dPicker == null) {dPicker = "Brak daty";}
+        if (dPicker == null) {dPicker = getResources().getString(R.string.nodate_text);}
 
         db.addObject(new Object(nPicker, dPicker, oPicker));
 
-        List<Object> contacts = db.getAllObjects();
+        //List<Object> contacts = db.getAllObjects();
 
-        for (Object cn : contacts) {
+        /*for (Object cn : contacts) {
             String log = "Id: " + cn.getID()+" ,Name: " + cn.getName() + " ,Object: " + cn.getObject();
             // Writing Contacts to log
-            Log.d("Name: ", log);}
+            Log.d("Name: ", log);}*/
     }
 
     @Override
@@ -92,13 +92,13 @@ public class NewEntryActivity extends AppCompatActivity {
                 String oPicker = objectPicker.getText().toString();
 
                 if (nPicker.equals("")) {
-                    CharSequence text = "Uzupełnij imię i nazwisko";
+                    CharSequence text = getResources().getString(R.string.checkname_text);
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
 
                 if (oPicker.equals("")) {
-                    CharSequence text = "Uzupełnij obiekt";
+                    CharSequence text = getResources().getString(R.string.checkobject_text);
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }

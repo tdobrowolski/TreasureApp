@@ -31,9 +31,10 @@
         android:visibility="gone"
         android:lines="2"
         android:lineSpacingExtra="8dp"
-        android:text="Trochę tu pusto. \n Dodaj coś do swojego sejfu." />
+        android:text="@string/empty_text" />
 
     <ImageView
+        android:id="@+id/empty_view2"
         android:layout_width="fill_parent"
         android:layout_height="310dp"
         android:src="@drawable/safeopened" />

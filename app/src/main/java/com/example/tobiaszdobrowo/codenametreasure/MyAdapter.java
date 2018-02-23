@@ -62,11 +62,11 @@ public class MyAdapter extends RecyclerView.Adapter {
                 public void onClick(final View v) {
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(parent.getContext());
-                    builder1.setMessage("Czy chcesz usunąć ten wpis?");
+                    builder1.setMessage(R.string.popup_text);
                     builder1.setCancelable(true);
 
                     builder1.setPositiveButton(
-                            "Tak",
+                            R.string.yes_text,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
 
@@ -80,7 +80,7 @@ public class MyAdapter extends RecyclerView.Adapter {
                             });
 
                     builder1.setNegativeButton(
-                            "Nie",
+                            R.string.no_text,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     dialog.cancel();

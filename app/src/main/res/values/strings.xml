@@ -1,4 +1,23 @@
 <resources>
-    <string name="app_name">Treasure</string>
+    <string name="app_name" translatable="false">Treasure</string>
     <string name="action_settings">Settings</string>
+
+    <string name="empty_text">It\'s a bit empty here.\nAdd something!</string>
+
+    <string name="newentry_text">New entry</string>
+    <string name="personaldata_text">Personal data</string>
+    <string name="name_text">Name</string>
+    <string name="object_text">Object</string>
+    <string name="deadline_text">Set deadline</string>
+    <string name="date_text">Select date</string>
+
+    <string name="popup_text">Do you want to delete this entry?</string>
+    <string name="pickeddate_text">Picked date: </string>
+    <string name="nodate_text">No date</string>
+    <string name="yes_text">Yes</string>
+    <string name="no_text">No</string>
+    <string name="checkname_text">Fill in name</string>
+    <string name="checkobject_text">Fill in object</string>
+
+
 </resources>

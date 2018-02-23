@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static Context context;
     RecyclerView recyclerView;
     private TextView emptyView;
+    private ImageView emptyView2;
     MyAdapter adapter;
 
     @Override
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         emptyView = (TextView) findViewById(R.id.empty_view);
+        emptyView2 = (ImageView) findViewById(R.id.empty_view2);
         recyclerView.setHasFixedSize(true); // optymalizacja
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -84,10 +87,12 @@ public class MainActivity extends AppCompatActivity {
         if (amount == 0) {
             recyclerView.setVisibility(View.GONE);
             emptyView.setVisibility(View.VISIBLE);
+            emptyView2.setVisibility(View.VISIBLE);
         }
         else {
             recyclerView.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
+            emptyView2.setVisibility(View.GONE);
         }
 
     }

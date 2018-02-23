@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Treasure</string>
+    <string name="popup_text">Usunąć wpis?</string>
+    <string name="checkname_text">Wypełnij pole Imię Nazwisko</string>
+    <string name="checkobject_text">Wypełnij pole Obiekt</string>
+    <string name="empty_text">Trochę tu pusto.\nDodaj coś do sejfu!</string>
+    <string name="newentry_text">Nowy wpis</string>
+    <string name="name_text">Imię Nazwisko</string>
+    <string name="nodate_text">Brak daty</string>
+    <string name="no_text">Nie</string>
+    <string name="personaldata_text">Dane osobowe</string>
+    <string name="object_text">Obiekt</string>
+    <string name="date_text">Wybierz datę</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="deadline_text">Ustal deadline oddania</string>
+    <string name="pickeddate_text">"Wybrana data: "</string>
+    <string name="yes_text">Tak</string>
+</resources>
