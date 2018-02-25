@@ -2,7 +2,9 @@ package com.example.tobiaszdobrowo.codenametreasure;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.provider.CalendarContract;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.List;
+import java.util.GregorianCalendar;
 
 public class NewEntryActivity extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class NewEntryActivity extends AppCompatActivity {
     int year, month, day;
     Calendar mDate;
     String dPicker;
+    int[] data = new int[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +55,12 @@ public class NewEntryActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                         //akcja po zatwierdzeniu wyboru daty
+                        month += 1;
 
-                        dPicker = dayOfMonth + "." + month+1 + "." + year;
+                        dPicker = dayOfMonth + "." + month + "." + year;
+                        data[0] = year;
+                        data[1] = month-1;
+                        data[2] = dayOfMonth;
                         datePicker.setText(getResources().getString(R.string.pickeddate_text) + dPicker);
                     }
                 }, year, month, day);
@@ -105,6 +112,7 @@ public class NewEntryActivity extends AppCompatActivity {
 
                 if (!nPicker.equals("") && !oPicker.equals("")) {
                     saveToDB(nPicker, oPicker);
+                    addEvent(nPicker, oPicker);
                     finish();
                 }
 
@@ -128,5 +136,25 @@ public class NewEntryActivity extends AppCompatActivity {
         menu.findItem(R.id.action_check).setIcon(drawable);
 
         return true;
+    }
+
+    public void addEvent(String nPicker, String oPicker) {
+        String title = oPicker + " - " + nPicker;
+        Intent calIntent = new Intent(Intent.ACTION_INSERT);
+        calIntent.setType("vnd.android.cursor.item/event");
+        calIntent.putExtra(CalendarContract.Events.TITLE, title);
+        //calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "My Beach House");
+        calIntent.putExtra(CalendarContract.Events.DESCRIPTION, "Dodane przez Treasure.");
+        Log.d(getClass().getName(), "day = " + data[2]);
+        Log.d(getClass().getName(), "month = " + data[1]);
+        Log.d(getClass().getName(), "year = " + data[0]);
+        GregorianCalendar calDate = new GregorianCalendar(data[0], data[1], data[2]);
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                calDate.getTimeInMillis());
+        calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+                calDate.getTimeInMillis());
+
+        startActivity(calIntent);
     }
 }
