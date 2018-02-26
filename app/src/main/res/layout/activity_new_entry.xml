@@ -9,27 +9,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin">
+        android:layout_marginRight="@dimen/fab_margin"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/first_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:text="@string/personaldata_text"
             android:textSize="20sp"
-            android:text="@string/personaldata_text"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/new_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:textSize="14sp"
-            android:hint="@string/name_text"/>
+            android:hint="@string/name_text"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/new_object"
@@ -37,32 +37,39 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/new_name"
             android:layout_marginBottom="10dp"
-            android:textSize="14sp"
-            android:hint="@string/object_text"/>
+            android:hint="@string/object_text"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/date_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:textStyle="bold"
+            android:text="@string/deadline_text"
             android:textSize="20sp"
-            android:text="@string/deadline_text"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_pick_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="15dp"
             android:text="@string/date_text"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp"/>
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Switch
+            android:id="@+id/event_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="@string/event_text" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             app:srcCompat="@drawable/safeillustration" />
 
     </LinearLayout>

@@ -19,5 +19,7 @@
     <string name="checkname_text">Fill in name</string>
     <string name="checkobject_text">Fill in object</string>
 
+    <string name="event_text">Set event</string>
+
 
 </resources>

@@ -13,8 +13,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +27,11 @@ public class NewEntryActivity extends AppCompatActivity {
 
     TextView datePicker;
     EditText namePicker, objectPicker;
+    Switch eventSwitch;
     int year, month, day;
     Calendar mDate;
     String dPicker;
+    boolean stateSwitch;
     int[] data = new int[3];
 
     @Override
@@ -40,11 +44,25 @@ public class NewEntryActivity extends AppCompatActivity {
         namePicker = findViewById(R.id.new_name);
         objectPicker = findViewById(R.id.new_object);
 
+        eventSwitch = findViewById(R.id.event_switch);
+        eventSwitch.setEnabled(false);
+
         mDate = Calendar.getInstance();
 
         day = mDate.get(Calendar.DAY_OF_MONTH);
         month = mDate.get(Calendar.MONTH);
         year = mDate.get(Calendar.YEAR);
+
+        eventSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    stateSwitch = true;
+                } else {
+                    stateSwitch = false;
+                }
+            }
+        });
 
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +80,7 @@ public class NewEntryActivity extends AppCompatActivity {
                         data[1] = month-1;
                         data[2] = dayOfMonth;
                         datePicker.setText(getResources().getString(R.string.pickeddate_text) + dPicker);
+                        eventSwitch.setEnabled(true);
                     }
                 }, year, month, day);
 
@@ -112,7 +131,7 @@ public class NewEntryActivity extends AppCompatActivity {
 
                 if (!nPicker.equals("") && !oPicker.equals("")) {
                     saveToDB(nPicker, oPicker);
-                    addEvent(nPicker, oPicker);
+                    if (stateSwitch) { addEvent(nPicker, oPicker); }
                     finish();
                 }
 

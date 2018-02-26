@@ -16,4 +16,6 @@
     <string name="deadline_text">Ustal deadline oddania</string>
     <string name="pickeddate_text">"Wybrana data: "</string>
     <string name="yes_text">Tak</string>
+    <string name="event_text">Ustaw wydarzenie</string>
+
 </resources>
