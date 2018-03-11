@@ -12,7 +12,7 @@
     <string name="date_text">Select date</string>
 
     <string name="popup_text">Do you want to delete this entry?</string>
-    <string name="pickeddate_text">Picked date: </string>
+    <string name="pickeddate_text">"Picked date: "</string>
     <string name="nodate_text">No date</string>
     <string name="yes_text">Yes</string>
     <string name="no_text">No</string>

@@ -7,17 +7,49 @@
         android:id="@+id/lyt_container"
         android:background="@color/colorPrimary">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:paddingBottom="2dp"
+                    android:text="Imię Nazwisko"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="22.01.2018" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/text_object"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
@@ -26,35 +58,9 @@
                 android:textAllCaps="false"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:maxEms="6"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/text_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/text_name"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:text="22.01.2018" />
-
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif"
-                android:paddingBottom="2dp"
-                android:text="Imię Nazwisko"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:maxEms="10"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </FrameLayout>

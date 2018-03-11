@@ -9,13 +9,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +28,7 @@ public class NewEntryActivity extends AppCompatActivity {
     TextView datePicker;
     EditText namePicker, objectPicker;
     Switch eventSwitch;
+    ImageView safeIllustration;
     int year, month, day;
     Calendar mDate;
     String dPicker;
@@ -46,6 +47,15 @@ public class NewEntryActivity extends AppCompatActivity {
 
         eventSwitch = findViewById(R.id.event_switch);
         eventSwitch.setEnabled(false);
+
+        safeIllustration = findViewById(R.id.safe_illustration);
+
+        int g = getResources().getConfiguration().orientation;
+        if (g == 2) {
+            safeIllustration.setVisibility(View.GONE);
+        } else {
+            safeIllustration.setVisibility(View.VISIBLE);
+        }
 
         mDate = Calendar.getInstance();
 
@@ -89,6 +99,18 @@ public class NewEntryActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        int g = getResources().getConfiguration().orientation;
+        if (g == 2) {
+            safeIllustration.setVisibility(View.GONE);
+        } else if (g == 1) {
+            safeIllustration.setVisibility(View.VISIBLE);
+        }
+
+    }
+
     public void saveToDB(String nPicker, String oPicker) {
 
         database db = new database(this);
@@ -97,12 +119,6 @@ public class NewEntryActivity extends AppCompatActivity {
 
         db.addObject(new Object(nPicker, dPicker, oPicker));
 
-        //List<Object> contacts = db.getAllObjects();
-
-        /*for (Object cn : contacts) {
-            String log = "Id: " + cn.getID()+" ,Name: " + cn.getName() + " ,Object: " + cn.getObject();
-            // Writing Contacts to log
-            Log.d("Name: ", log);}*/
     }
 
     @Override
@@ -162,11 +178,7 @@ public class NewEntryActivity extends AppCompatActivity {
         Intent calIntent = new Intent(Intent.ACTION_INSERT);
         calIntent.setType("vnd.android.cursor.item/event");
         calIntent.putExtra(CalendarContract.Events.TITLE, title);
-        //calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, "My Beach House");
         calIntent.putExtra(CalendarContract.Events.DESCRIPTION, "Dodane przez Treasure.");
-        Log.d(getClass().getName(), "day = " + data[2]);
-        Log.d(getClass().getName(), "month = " + data[1]);
-        Log.d(getClass().getName(), "year = " + data[0]);
         GregorianCalendar calDate = new GregorianCalendar(data[0], data[1], data[2]);
         calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
         calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
@@ -176,4 +188,5 @@ public class NewEntryActivity extends AppCompatActivity {
 
         startActivity(calIntent);
     }
+
 }

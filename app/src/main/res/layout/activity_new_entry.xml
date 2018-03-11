@@ -64,12 +64,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
+            android:textColor="@color/colorGrey"
+            android:theme="@style/PremiereTheme"
             android:text="@string/event_text" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/safe_illustration"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             app:srcCompat="@drawable/safeillustration" />
 
     </LinearLayout>
