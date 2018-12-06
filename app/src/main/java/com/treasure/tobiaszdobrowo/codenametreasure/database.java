@@ -1,4 +1,4 @@
-package com.example.tobiaszdobrowo.codenametreasure;
+package com.treasure.tobiaszdobrowo.codenametreasure;
 
 import android.content.ContentValues;
 import android.content.Context;

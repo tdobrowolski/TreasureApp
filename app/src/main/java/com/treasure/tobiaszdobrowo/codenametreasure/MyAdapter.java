@@ -1,4 +1,4 @@
-package com.example.tobiaszdobrowo.codenametreasure;
+package com.treasure.tobiaszdobrowo.codenametreasure;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -56,7 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.recycle_object_layout, parent, false);
 
             // usuniecie obiektu
-            view.setOnClickListener(new View.OnClickListener() {
+            /*view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
 
@@ -89,7 +89,7 @@ public class MyAdapter extends RecyclerView.Adapter {
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
                 }
-            });
+            });*/
 
         return new MyViewHolder(view);
     }
@@ -108,6 +108,12 @@ public class MyAdapter extends RecyclerView.Adapter {
         List<Object> objects = db.getAllObjects();
         return objects.size();
         //return 0;
+    }
+
+    public void removeItem(int position) {
+        db.deleteObject(items.get(position));
+        updateItems();
+        notifyItemRemoved(position);
     }
 
 }

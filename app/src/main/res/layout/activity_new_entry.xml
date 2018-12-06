@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tobiaszdobrowo.codenametreasure.NewEntryActivity">
+    tools:context="com.treasure.tobiaszdobrowo.codenametreasure.NewEntryActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,28 +17,40 @@
             android:id="@+id/first_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="10dp"
             android:text="@string/personaldata_text"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/new_name"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:hint="@string/name_text"
-            android:textSize="14sp" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/new_object"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/new_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/name_text"
+                android:textSize="14sp"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/new_name"
-            android:layout_marginBottom="10dp"
-            android:hint="@string/object_text"
-            android:textSize="14sp" />
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/new_object"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/new_name"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/object_text"
+                android:textSize="14sp"/>
+
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:id="@+id/date_picker"
@@ -68,14 +80,16 @@
             android:theme="@style/PremiereTheme"
             android:text="@string/event_text" />
 
-        <ImageView
-            android:id="@+id/safe_illustration"
-            android:layout_width="match_parent"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            app:srcCompat="@drawable/safeillustration" />
+            app:lottie_fileName="safe.json"
+            app:lottie_loop="false"
+            app:lottie_autoPlay="true" />
 
     </LinearLayout>
 

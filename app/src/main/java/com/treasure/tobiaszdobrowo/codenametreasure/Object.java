@@ -1,4 +1,4 @@
-package com.example.tobiaszdobrowo.codenametreasure;
+package com.treasure.tobiaszdobrowo.codenametreasure;
 
 /**
  * Created by tobiaszdobrowo on 03.12.2017.

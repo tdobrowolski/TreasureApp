@@ -31,7 +31,7 @@
                     android:text="Imię Nazwisko"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorNotBlack"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -58,7 +58,7 @@
                 android:textAllCaps="false"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorNotBlack"
                 android:textSize="20sp" />
 
         </LinearLayout>

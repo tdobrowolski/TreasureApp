@@ -6,7 +6,7 @@
         android:id="@+id/action_check"
         android:icon="@drawable/ic_check_black_24dp"
         android:iconTint="#ffffff"
-        android:title="Potwierdź"
+        android:title="Zapisz"
         app:showAsAction="ifRoom" />
 
 </menu>

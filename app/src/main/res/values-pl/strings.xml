@@ -18,4 +18,6 @@
     <string name="yes_text">Tak</string>
     <string name="event_text">Ustaw wydarzenie</string>
 
+    <string name="calendar_text">Dodane przez Treasure</string>
+
 </resources>

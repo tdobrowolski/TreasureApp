@@ -1,4 +1,4 @@
-package com.example.tobiaszdobrowo.codenametreasure;
+package com.treasure.tobiaszdobrowo.codenametreasure;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -48,7 +49,7 @@ public class NewEntryActivity extends AppCompatActivity {
         eventSwitch = findViewById(R.id.event_switch);
         eventSwitch.setEnabled(false);
 
-        safeIllustration = findViewById(R.id.safe_illustration);
+        safeIllustration = findViewById(R.id.lottie);
 
         int g = getResources().getConfiguration().orientation;
         if (g == 2) {
@@ -178,7 +179,7 @@ public class NewEntryActivity extends AppCompatActivity {
         Intent calIntent = new Intent(Intent.ACTION_INSERT);
         calIntent.setType("vnd.android.cursor.item/event");
         calIntent.putExtra(CalendarContract.Events.TITLE, title);
-        calIntent.putExtra(CalendarContract.Events.DESCRIPTION, "Dodane przez Treasure.");
+        calIntent.putExtra(CalendarContract.Events.DESCRIPTION, R.string.calendar_text);
         GregorianCalendar calDate = new GregorianCalendar(data[0], data[1], data[2]);
         calIntent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
         calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
@@ -186,7 +187,13 @@ public class NewEntryActivity extends AppCompatActivity {
         calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
                 calDate.getTimeInMillis());
 
-        startActivity(calIntent);
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+        view.getContext().startActivity(calIntent);
     }
 
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Treasure</string>
+    <string name="app_name">Treasure</string>
     <string name="action_settings">Settings</string>
 
     <string name="empty_text">It\'s a bit empty here.\nAdd something!</string>
@@ -20,6 +20,8 @@
     <string name="checkobject_text">Fill in object</string>
 
     <string name="event_text">Set event</string>
+
+    <string name="calendar_text">Added by Treasure</string>
 
 
 </resources>
