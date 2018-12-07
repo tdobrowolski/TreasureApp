@@ -23,4 +23,9 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorDanger</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.provider.CalendarContract;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -136,14 +137,16 @@ public class NewEntryActivity extends AppCompatActivity {
 
                 if (nPicker.equals("")) {
                     CharSequence text = getResources().getString(R.string.checkname_text);
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    TextInputLayout til = (TextInputLayout) findViewById(R.id.til_name);
+                    til.setError(text);
+                    //Toast toast = Toast.makeText(context, text, duration);
+                    //toast.show();
                 }
 
                 if (oPicker.equals("")) {
                     CharSequence text = getResources().getString(R.string.checkobject_text);
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    TextInputLayout til = (TextInputLayout) findViewById(R.id.til_object);
+                    til.setError(text);
                 }
 
                 if (!nPicker.equals("") && !oPicker.equals("")) {
